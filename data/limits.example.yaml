@@ -1,0 +1,16 @@
+# EXAMPLE only — not approved. The job must refuse to post if this file is
+# missing, expired, or status is not "approved".
+# Copy to limits.yaml only after Roger approves the exact values.
+
+version: 1
+status: not-approved          # must be "approved" before any live post
+approved_by: ""               # Roger's words, verbatim, plus date
+page_name: "Key To The Web"
+page_id: ""                   # Roger confirms the Page id before stage 2
+posts_per_day: 2
+end_date: "YYYY-MM-DD"        # inclusive, America/Chicago; after this date, no posts
+graph_api_version: "v27.0"    # re-check against Meta docs before going live
+mode: dry-run                 # dry-run | post  (post is refused unless status is approved)
+allow_pages:
+  - "Key To The Web"
+# Do not add Keys To Success or Keyhole.Today until the first Page has run clean.

@@ -1,0 +1,23 @@
+{
+"approval": "none",
+"attempt": 1,
+"content_id": "live-roger-sim",
+"corrects": "",
+"error": "",
+"facebook_permalink": "",
+"graph_api_version": "v27.0",
+"graph_post_id": "",
+"id": "P-0001",
+"image_url": "https://next-xus.net/nextxus-tools/deepai-gallery/human-machine-hands.jpg",
+"limits_file": "limits.yaml",
+"message": "(exact text as posted)",
+"message_sha256": "",
+"page": "Key To The Web",
+"page_id": "",
+"posted_url": "https://next-xus.net/nextxus-sim/roger-sim.html",
+"result": "dry-run",
+"retrieved_at": {"user_local": "2026-11-10T15:19:51.845-06:00", "user_timezone": "America/Chicago", "utc": "2026-11-10T21:19:51.845Z"},
+"source_url": "https://next-xus.net/nextxus-sim/roger-sim.html",
+"title": "Roger Sim, Architect's Mind",
+"ts_chicago": "2026-11-10T00:00:00-06:00"
+}
