@@ -30,7 +30,7 @@ AI-assisted, checked, approved by Roger Keyserling.
 - Image: https://next-xus.net/nextxus-tools/deepai-gallery/federation-satellite.jpg (640×640)
 - Message:
 
-The Votel jobs — a working AI receptionist, a booking page, follow-up, and a pre-built system for a niche — for $0, as files you own. No account. No subscription. No tracking.
+A working AI receptionist, a booking page, follow-up, and a pre-built system for a niche — for $0, as files you own. No account. No subscription. No tracking.
 
 https://next-xus.net/nextxus-tools/real-agency-kit.html
 
