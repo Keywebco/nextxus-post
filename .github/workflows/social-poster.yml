@@ -1,0 +1,38 @@
+# LOCAL DRAFT ONLY — not in any GitHub repo, not enabled.
+# Default job is a dry run. It must not post.
+name: Next-Xus social poster
+on:
+  schedule:
+    - cron: "0 16 * * *"   # 10:00 America/Chicago during CST (UTC-6); re-check around DST
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run (default) or post"
+        required: false
+        default: dry-run
+        type: choice
+        options:
+          - dry-run
+          - post
+
+permissions:
+  contents: write   # append-only ledger commit; never used to post to Facebook
+concurrency:
+  group: social-poster
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run poster (dry-run unless approved limits + explicit post)
+        env:
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+          REQUESTED_MODE: ${{ github.event.inputs.mode || 'dry-run' }}
+        run: |
+          pip install pyyaml
+          python3 scripts/link_check.py
+          python3 scripts/poster.py --mode "$REQUESTED_MODE" --limits data/limits.yaml
+          # If poster exits 2 (dead or missing token) the job fails and stops. Do not retry here.

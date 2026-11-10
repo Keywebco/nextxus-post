@@ -1,0 +1,19 @@
+{
+"checked": "2026-11-10T14:46:00-06:00",
+"images": [
+{"pixels": "640x640", "square_458": true, "url": "https://next-xus.net/nextxus-tools/deepai-gallery/ai-companion-val.jpg"},
+{"pixels": "640x640", "square_458": true, "url": "https://next-xus.net/nextxus-tools/deepai-gallery/federation-satellite.jpg"},
+{"pixels": "640x640", "square_458": true, "url": "https://next-xus.net/nextxus-tools/deepai-gallery/golden-cathedral-library.jpg"},
+{"pixels": "640x640", "square_458": true, "url": "https://next-xus.net/nextxus-tools/deepai-gallery/human-machine-hands.jpg"},
+{"pixels": "640x640", "square_458": true, "url": "https://next-xus.net/nextxus-tools/deepai-gallery/music-studio-golden.jpg"},
+{"pixels": "640x640", "square_458": true, "url": "https://next-xus.net/nextxus-tools/deepai-gallery/ring-of-twelve-lenses.jpg"},
+{"pixels": "1600x1600", "square_458": true, "url": "https://next-xus.net/nextxus-music/episodes/episode-cover.jpg"},
+{"note": "Large but not 1:1; do not use for a custom preview.", "pixels": "1070x1034", "square_458": false, "url": "https://next-xus.net/nextxus-sim/roger-sim-face.jpg"},
+{"note": "Not 1:1.", "pixels": "1170x1276", "square_458": false, "url": "https://next-xus.net/nextxus-tools/mascot-robot.jpg"},
+{"note": "Not 1:1.", "pixels": "1170x1184", "square_458": false, "url": "https://next-xus.net/nextxus-tools/mascot-robot-white.jpg"},
+{"note": "Too small.", "pixels": "202x200", "square_458": false, "url": "https://next-xus.net/ring-of-12/ring-of-6-poster.jpg"}
+],
+"pages_with_og_image": [],
+"retrieved_at": {"user_local": "2026-11-10T15:19:52.428-06:00", "user_timezone": "America/Chicago", "utc": "2026-11-10T21:19:52.428Z"},
+"rule": "Custom Facebook link previews need a 1:1 image, at least 458x458. Only real existing public files were measured. None of the checked pages had og:image."
+}
