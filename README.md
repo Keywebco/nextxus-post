@@ -1,15 +1,25 @@
-# Next-Xus posting system — dry-run code (2026-11-10)
+# Next-Xus posting system — dry-run code, plus Stage 2 test post (2026-11-10/11)
 
-This is the Stage 1 dry-run package for the Next-Xus Facebook posting system, starting with the Page Key To The Web.
+This is the Stage 1 dry-run package for the Next-Xus Facebook posting system, starting with the Page Key To The Web, plus the Stage 2 test-post stage (one post, manual only, see below).
 
-It is a local dry-run only. The default mode is dry-run. There is no token in these files. Nothing here posts to Facebook, and nothing has been pushed to GitHub by Grok.
+The daily workflow is still dry-run by default. There is no token value in these files. Nothing posts unless the test-post workflow is run by hand with confirm=yes and the approved limits file in `data/limits.yaml` is in force.
+
+## Stage 2 — one test post (manual only)
+- Workflow `.github/workflows/test-post.yml`: manual dispatch only, no schedule, no push trigger. Run once from the Actions tab with confirm=yes.
+- Post: Day 1 post 1, Roger Sim — `data/test-post.json`. Photo post (the Roger Sim page has no og tags, so a plain link post would scrape with no image; the 640×640 image from the sample post is attached and the link is in the caption). Link: https://next-xus.net/nextxus-sim/roger-sim.html (verified 200).
+- Limits: `data/limits.yaml` — one post, one Page, one day only (2026-11-11). After that date it expires by itself. Daily posting is NOT enabled.
+- Safety: `poster.py` refuses post mode without `--test-post` (the daily workflow never passes it), checks the limits Page against the test-post Page, checks the token's own Page at run time and refuses if it does not match, refuses if the test was already recorded as sent, and never retries. A failed run stops and is reported to Roger.
+
+## PAGE CONFLICT — resolve before merging the test-post PR
+- README / limits.example / dry-run samples say the Page is **Key To The Web, 105137908362972**.
+- The main-chat record says the saved `FACEBOOK_PAGE_TOKEN` is for **Keys To Success, 270012706198023**.
+- The test-post files default to Key To The Web (the system as designed). If Roger confirms Keys To Success, change `page_name`, `page_id` and `allow_pages` in `data/limits.yaml` and `data/test-post.json` to Keys To Success / 270012706198023 before merging. Do not merge with the conflict unresolved.
 
 ## Holds (do not post these until the named work is done)
-- Podcast episode: hold until a normal episode page exists. Do not link to the raw `podcast.xml` feed file.
-- Real Agency Kit: hold until the page opening “The Votel jobs” is fixed on the page itself.
+- Podcast episode: hold lifted — the normal episode page now exists (nextxus-music PR #12, live 200). But Day 2 post 2 in the samples still links the raw `podcast.xml` file; swap its link to the episode page before that post is ever used.
+- Real Agency Kit: hold lifted — the page opening is fixed (nextxus-tools PR #14, live 200).
 
-## Intended GitHub repo
-These files are meant to be pushed **branch-first** to `Keywebco/nextxus-post` once Pontus has created that repo. Do not push to `main` first. No token and no posting in that first push.
+Follow-up, not blocking this test: add og:title / og:description / og:image to the Roger Sim page so future link posts scrape a proper preview instead of needing a photo post.
 
 ## Intended repo paths
 
