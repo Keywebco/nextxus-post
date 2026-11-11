@@ -1,0 +1,43 @@
+# ONE test post only. Manual dispatch only — no schedule, no push trigger.
+# Run it once, from the Actions tab, with confirm=yes. It posts exactly the
+# one post in data/test-post.json, then stops. It cannot post anything else:
+# poster.py requires --test-post in post mode, the limits file allows exactly
+# 1 post on 2026-11-11 only, and the token's Page is checked at run time.
+name: Next-Xus test post (one post, manual only)
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type yes to post the one approved test post"
+        required: true
+        default: "no"
+        type: choice
+        options:
+          - "no"
+          - "yes"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: social-poster-test
+  cancel-in-progress: false
+
+jobs:
+  test-post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refuse unless explicitly confirmed
+        if: ${{ github.event.inputs.confirm != 'yes' }}
+        run: |
+          echo "REFUSED: confirm was not 'yes'. Nothing posted."
+          exit 1
+      - name: Post the one approved test post
+        env:
+          FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
+        run: |
+          pip install pyyaml
+          python3 scripts/poster.py --mode post --limits data/limits.yaml --test-post data/test-post.json
+          # If poster exits 1 or 2 the job fails and stops. Do not retry here.

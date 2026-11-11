@@ -1,0 +1,32 @@
+# TEST POST ONLY — valid only after Roger confirms the Page and says merge.
+# One post, one Page, one day. After 2026-11-11 it expires by itself.
+# Daily posting is NOT enabled: test_post_only is true, posts_per_day is 1,
+# and poster.py refuses post mode without --test-post (which the daily
+# workflow never passes).
+#
+# PAGE CONFLICT — READ BEFORE MERGING:
+#   README / limits.example / dry-run samples say: Key To The Web, 105137908362972.
+#   Main-chat record says the saved FACEBOOK_PAGE_TOKEN is for: Keys To Success, 270012706198023.
+#   This file defaults to Key To The Web (the system as designed).
+#   If Roger confirms Keys To Success, change page_name, page_id and
+#   allow_pages to Keys To Success / 270012706198023 BEFORE merging.
+#   Do not merge with the conflict unresolved. As a safety net, poster.py
+#   checks the token's own Page at run time and refuses to post if it does
+#   not match page_id below — so even a wrong confirmation posts nothing.
+#
+# Copy: this file is the live limits file. limits.example.yaml stays
+# not-approved and is the template for any later daily posting.
+
+version: 1
+status: approved
+approved_by: "Roger Keyserling — test post, 2026-11-11 (merge word on this PR = approval; Page to confirm in PR review)"
+page_name: "Key To The Web"
+page_id: "105137908362972"
+posts_per_day: 1
+test_post_only: true
+start_date: "2026-11-11"
+end_date: "2026-11-11"
+graph_api_version: "v27.0"
+mode: post
+allow_pages:
+  - "Key To The Web"
